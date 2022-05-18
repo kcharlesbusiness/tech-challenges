@@ -1,0 +1,29 @@
+// Vitest Snapshot v1
+
+exports[`COMPONENT - BaseTable > renders a vue component with searchable input 1`] = `
+"<section class=\\"v-base-table\\">
+  <div class=\\"container\\">
+    <div class=\\"v-base-table__table\\">
+      <h2 class=\\"\\">BaseTable Title</h2>
+      <section>
+        <div><input type=\\"search\\" name=\\"search\\" placeholder=\\"search...\\" /></div>
+        <!--v-if-->
+      </section>
+    </div>
+  </div>
+</section>"
+`;
+
+exports[`COMPONENT - BaseTable > renders a vue component without searchable input 1`] = `
+"<section class=\\"v-base-table\\">
+  <div class=\\"container\\">
+    <div class=\\"v-base-table__table\\">
+      <h2 class=\\"\\">BaseTable Title</h2>
+      <section>
+        <!--v-if-->
+        <!--v-if-->
+      </section>
+    </div>
+  </div>
+</section>"
+`;
