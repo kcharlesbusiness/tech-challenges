@@ -1,6 +1,11 @@
-# Setup
+###_Setup_
+Install modules
+```yarn install```
 
-`yarn install`
+###_Environment_
+Run dev environment
+```yarn dev```
 
-`yarn dev`
-
+###_Tests_
+Run tests with vitest
+```yarn test```
