@@ -1,32 +1,24 @@
 <script setup lang="ts">
 defineProps<{
-  title: {
-    type: string,
-    required: true,
-  },
+  title: string,
 }>()
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="../assets/red-badger-logo.svg" width="500" />
-  </header>
+  <div>
+    <img alt="Vue logo" class="logo" src="../../assets/red-badger-logo.svg" width="500" />
+  </div>
 
-  <main>
-    <div class="wrapper">
-      <h1>{{ title }}</h1>
-      <h3>By Karl Charles</h3>
-    </div>
-  </main>
+  <div class="wrapper">
+    <h1>{{ title }}</h1>
+    <h3>By Karl Charles</h3>
+  </div>
 </template>
 
 <style scoped>
-header {
+.wrapper {
   width: 100%;
   line-height: 1.5;
-}
-
-main {
   text-align: center;
 }
 

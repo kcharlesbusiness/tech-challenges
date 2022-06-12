@@ -1,7 +1,7 @@
-import { describe, it, expect, beforeEach } from 'vitest'
-import { mount, VueWrapper } from '@vue/test-utils'
-import Header from '../Header.vue';
+import { describe, it, expect, beforeEach } from 'vitest';
+import { mount, VueWrapper } from '@vue/test-utils';
 import type { ComponentPublicInstance } from 'vue';
+import Header from '../Header.vue';
 
 describe('Header', () => {
     let wrapper: VueWrapper<ComponentPublicInstance<Header>>;
