@@ -4,7 +4,7 @@ import { mount, VueWrapper } from '@vue/test-utils';
 import MarsExplorer from '../MarsExplorer.vue';
 
 describe('MarsExplorer', () => {
-    let wrapper: VueWrapper<ComponentPublicInstance<MarsExplorer>>;
+    let wrapper: VueWrapper<ComponentPublicInstance<typeof MarsExplorer>>;
 
     beforeEach(() => {
         wrapper = mount(MarsExplorer);

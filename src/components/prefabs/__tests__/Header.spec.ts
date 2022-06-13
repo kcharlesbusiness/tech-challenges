@@ -4,7 +4,7 @@ import type { ComponentPublicInstance } from 'vue';
 import Header from '../Header.vue';
 
 describe('Header', () => {
-    let wrapper: VueWrapper<ComponentPublicInstance<Header>>;
+    let wrapper: VueWrapper<ComponentPublicInstance<typeof Header>>;
     beforeEach(() => {
         wrapper = mount(Header, { props: { title: 'Martian Robots' } });
     })
