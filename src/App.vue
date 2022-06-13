@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import Header from './components/prefabs/Header.vue';
+import MarsExplorer from './components/containers/MarsExplorer.vue';
 </script>
 
 <template>
   <Header title="Martian Robots" />
+  <MarsExplorer />
 </template>
 
 <style>

@@ -1,10 +1,10 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-import { useColonisationOperation } from '../explorationComposable';
-import { getRandomFrom } from '../../helpers/numbers';
+import { useExploration } from '../explorationComposable';
+import { getRandomFrom } from '../../helpers/numberHelper';
 import { Robot } from '../../types/robotsType';
 
 describe('colonisationComposable', () => {
-    const { scanTerrain, scoutTerrain, initialiseScoutRobots, state } = useColonisationOperation();
+    const { scanTerrain, scoutTerrain, initialiseScoutRobots, state } = useExploration();
 
     it('returns null when accessing the states\' "units" property before scouting the terrain', () => {
         expect(state.units).toBeNull();

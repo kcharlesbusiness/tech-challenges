@@ -3,7 +3,9 @@
 </script>
 
 <template>
-  <div id="mars-explorer"></div>
+  <div id="mars-explorer">
+    <button class="explore">Begin Exploration</button>
+  </div>
 </template>
 
 <style scoped lang="scss">

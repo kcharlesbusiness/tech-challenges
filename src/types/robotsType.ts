@@ -1,3 +1,5 @@
+import type { Grid } from '@/types/gridTypes';
+
 export namespace Robot {
     export enum Statuses {
         STANDBY = 0,
@@ -13,9 +15,24 @@ export namespace Robot {
         WEST = 'W',
     }
 
+    export enum Instruction {
+        RIGHT = 'R',
+        LEFT = 'L',
+        FORWARD = 'F',
+        // "additional command types"
+    }
+
     export interface Interface {
-        position: string | null;
+        position: Grid.Position | null;
+        orientation: Robot.Orientation | null;
         instructions: string | null;
         status: Statuses;
+        // methods
+        getCurrentPosition: () => string;
+        setPosition: (position: Grid.Position, orientation: Robot.Orientation) => void;
+        executeInstructions: () => void;
+        // accessors
+        isOperational: boolean;
+        lastKnownPosition: string;
     }
 }
