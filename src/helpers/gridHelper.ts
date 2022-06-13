@@ -3,15 +3,17 @@ import { getRandom } from '@/helpers/numberHelper';
 import type { Grid } from '@/types/gridTypes';
 
 export function getRandomOrientation(): Robot.Orientation {
-    switch (getRandom(3)) {
+    switch (getRandom(4, 0)) {
         case 0:
             return Robot.Orientation.NORTH;
         case 1:
             return Robot.Orientation.EAST;
         case 2:
             return Robot.Orientation.SOUTH;
-        default:
+        case 3:
             return Robot.Orientation.WEST;
+        default:
+            throw new Error('Orientation unable to be obtained');
     }
 }
 

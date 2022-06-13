@@ -1,4 +1,4 @@
-import { describe, expect, it, vi, afterEach } from 'vitest';
+import { describe, expect, it, vi, beforeEach, afterEach } from 'vitest';
 import RobotModel from '../RobotModel';
 import { Robot } from '../../types/robotsType';
 import { scentStore } from '../../stores/scentStore';
@@ -6,13 +6,16 @@ import type { Grid } from '../../types/gridTypes';
 
 describe('MODEL - RobotModel', () => {
     const originalInstructions: string = 'LRFLRFLRFLRF';
-    const robot: RobotModel = new RobotModel({
-        position: { x: 10, y: 10 },
-        orientation: Robot.Orientation.NORTH,
-        instructions: originalInstructions,
-        gridBounds: { x: 50, y: 50 },
-    });
+    let robot: RobotModel;
 
+    beforeEach(() => {
+        robot = new RobotModel({
+            position: { x: 10, y: 10 },
+            orientation: Robot.Orientation.NORTH,
+            instructions: originalInstructions,
+            gridBounds: { x: 50, y: 50 },
+        });
+    });
     afterEach(() => {
         scentStore.scents = [];
     });
@@ -29,6 +32,13 @@ describe('MODEL - RobotModel', () => {
     });
 
     describe('executeInstructions', () => {
+        it('throws error when missing required class properties', () => {
+            robot.position = null;
+            robot.instructions = null;
+            robot.orientation = null;
+            expect(() => robot.executeInstructions()).toThrow('Initialise this robot before executing its instructions');
+        });
+
         it('handles a full set of instructions when the robot doesn\'t get lost', () => {
             robot.executeInstructions();
             expect(robot.status).toEqual(Robot.Statuses.COMPLETED);
@@ -80,11 +90,20 @@ describe('MODEL - RobotModel', () => {
 
     describe('isOperational', () => {
         const originalInstructions: string = 'LRFLRFLRFLRF';
-        const robot: RobotModel = new RobotModel({
-            position: { x: 10, y: 10 },
-            orientation: Robot.Orientation.NORTH,
-            instructions: originalInstructions,
-            gridBounds: { x: 11, y: 11 },
+        let robot: RobotModel;
+
+        beforeEach(() => {
+            robot = new RobotModel({
+                position: { x: 10, y: 10 },
+                orientation: Robot.Orientation.NORTH,
+                instructions: originalInstructions,
+                gridBounds: { x: 11, y: 11 },
+            });
+        });
+
+        it('throws error when missing the class "position" property', () => {
+            robot.position = null;
+            expect(() => robot.isOperational).toThrow('Initialise this robot before executing its instructions');
         });
 
         it('return TRUE when current position and status are in within the operation parameters', () => {
@@ -115,11 +134,20 @@ describe('MODEL - RobotModel', () => {
 
     describe('lastKnownPosition', () => {
         const originalInstructions: string = 'LRFLRFLRFLRF';
-        const robot: RobotModel = new RobotModel({
-            position: { x: 10, y: 10 },
-            orientation: Robot.Orientation.NORTH,
-            instructions: originalInstructions,
-            gridBounds: { x: 11, y: 11 },
+        let robot: RobotModel;
+
+        beforeEach(() => {
+            robot = new RobotModel({
+                position: { x: 10, y: 10 },
+                orientation: Robot.Orientation.NORTH,
+                instructions: originalInstructions,
+                gridBounds: { x: 11, y: 11 },
+            });
+        });
+
+        it('return "Earth" when the robot is missing the "position" property', () => {
+            robot.position = null;
+            expect(robot.lastKnownPosition).toEqual('Earth');
         });
 
         it('says the position is "Earth" when the robot has been initiated but not executed', () => {

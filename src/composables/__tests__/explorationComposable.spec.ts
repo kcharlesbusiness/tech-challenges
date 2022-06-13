@@ -25,6 +25,11 @@ describe('colonisationComposable', () => {
             expect(state.units).toEqual(expectedUnits);
         });
 
+        it('throws an error when "initialiseScoutRobots" is executed without the state units set', () => {
+            state.units = null;
+            expect(() => initialiseScoutRobots()).toThrow('We need to scan the terrain before prepping the robots!');
+        });
+
         it('initiates the robots required to scout the terrain, based on the total "units"', () => {
             initialiseScoutRobots();
 
@@ -37,6 +42,20 @@ describe('colonisationComposable', () => {
         beforeEach(() => {
             scanTerrain(getRandom(50));
             initialiseScoutRobots();
+        });
+
+        it('resets the output list when executing "scoutTerrain"', () => {
+            state.output.push('999 999 N'); // A coordinate that should never exist in current logic
+            expect(state.output.length).toEqual(1);
+
+            scoutTerrain();
+
+            expect(state.output.find((entry: string) => entry.includes('999 999 N'))).toBeFalsy();
+        });
+
+        it('throws an error when executing "scoutTerrain" when robots have not been initiated yet', () => {
+            state.robots = [];
+            expect(() => scoutTerrain()).toThrow('We need to scan the terrain and initialise the robots before prepping the robots!');
         });
 
         it('scouting begins and robots no longer have the "STANDBY" status', () => {
