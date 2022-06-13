@@ -8,7 +8,7 @@ export function generateScoutPath(max: number = 100): string {
     let instructions: Robot.Interface['instructions'] = '';
 
     for (let i = 0; i <= actualMaxInstructions; i++) {
-        instructions += directionOptions[getRandom(directionOptions.length - 1)]
+        instructions += directionOptions[getRandom(directionOptions.length, 0)]
     }
 
     return instructions;

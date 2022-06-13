@@ -6,6 +6,7 @@ export namespace Exploration {
     export interface StateInterface {
         units: number | null;
         robots: Array<Robot.Interface> | null;
+        output: Array<string>;
     }
 
     export interface Interface extends BaseComposableInterface<UnwrapNestedRefs<Exploration.StateInterface>> {

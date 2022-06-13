@@ -10,6 +10,7 @@ export function useExploration(): Exploration.Interface {
     const state = reactive<Exploration.StateInterface>({
         units: null,
         robots: null,
+        output: [],
     });
 
     // Sets the scope of the mission
@@ -19,14 +20,15 @@ export function useExploration(): Exploration.Interface {
 
     const initialiseScoutRobots = (): void => {
         if (!state.units) {
-            throw new Error('When need to scan the terrain before prepping the robots!');
+            throw new Error('We need to scan the terrain before prepping the robots!');
         }
 
         // Prepping the robot bay
         state.robots = [];
 
         // initialising the robots
-        for (let i = 0; i <= state.units; i++) {
+        const maxRobots: number = Math.floor(state.units * 0.75);
+        for (let i = 0; i < maxRobots; i++) {
             const initialPosition: Grid.Position = {
                 x: getRandom(state.units),
                 y: getRandom(state.units),
@@ -44,14 +46,16 @@ export function useExploration(): Exploration.Interface {
     };
 
     const scoutTerrain = (): void => {
-        if (!state.robots) {
-            throw new Error('When need to scan the terrain and initialise the robots before prepping the robots!');
+        if (state.output.length) state.output = [];
+        if (!state.robots?.length) {
+            throw new Error('We need to scan the terrain and initialise the robots before prepping the robots!');
         }
 
         // Sequentially scout the terrain with the robots
-        state.robots.forEach((robot: RobotModel) => {
-            robot.executeInstructions();
-        });
+        for (const [index, robot] of state.robots.entries()) {
+            (robot as RobotModel).executeInstructions();
+            state.output.push((robot as RobotModel).lastKnownPosition);
+        }
     }
 
     return {

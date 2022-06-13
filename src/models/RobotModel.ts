@@ -2,6 +2,7 @@ import { Robot } from '@/types/robotsType';
 import type { Grid } from '@/types/gridTypes';
 import { deriveNewOrientation, deriveNextCoordinate } from '@/helpers/robotHelper';
 import { scentStore } from '@/stores/scentStore';
+import {formatGridCoordinates} from "@/helpers/gridHelper";
 
 export default class RobotModel implements Robot.Interface {
     public position!: Grid.Position | null;
@@ -81,19 +82,17 @@ export default class RobotModel implements Robot.Interface {
     }
 
     get lastKnownPosition(): string {
+        if (!this.position) return 'Earth';
+
+        const lastKnownValidPosition: Grid.Position = formatGridCoordinates(this.gridBounds, this.position);
+
         switch (this.status) {
             case Robot.Statuses.STANDBY:
                 return 'Earth';
             case Robot.Statuses.LOST:
-                if (!this.position?.x || !this.position?.y) return 'LOST';
-
-                // Get the position before being lost
-                const lastKnownPositionX: Grid.Position['x'] = this.position?.x > this.gridBounds.x ? this.gridBounds.x : this.position?.x;
-                const lastKnownPositionY: Grid.Position['y'] = this.position?.y > this.gridBounds.y ? this.gridBounds.y : this.position?.y;
-
-                return `${lastKnownPositionX} ${lastKnownPositionY} ${this.orientation} LOST`;
+                return `${lastKnownValidPosition.x} ${lastKnownValidPosition.y} ${this.orientation} LOST`;
             default:
-                return `${this.position?.x} ${this.position?.y} ${this.orientation}`;
+                return `${lastKnownValidPosition.x} ${lastKnownValidPosition.y} ${this.orientation}`;
         }
     }
 }

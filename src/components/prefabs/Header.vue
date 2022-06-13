@@ -11,7 +11,7 @@ defineProps<{
 
   <div class="wrapper">
     <h1>{{ title }}</h1>
-    <h3>By Karl Charles</h3>
+    <h3>By <a href="https://github.com/kcharlesbusiness/tech-challenges/tree/martian-robots" target="_blank" title="Karl Charles Github">Karl Charles</a></h3>
   </div>
 </template>
 
