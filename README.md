@@ -36,6 +36,9 @@ yarn build
 ```sh
 yarn test:unit
 ```
+```sh
+yarn coverage
+```
 
 ### Lint with [ESLint](https://eslint.org/)
 
