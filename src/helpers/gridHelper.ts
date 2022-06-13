@@ -1,8 +1,8 @@
 import { Robot } from '@/types/robotsType';
-import { getRandomFrom } from '@/helpers/numberHelper';
+import { getRandom } from '@/helpers/numberHelper';
 
 export function getRandomOrientation(): Robot.Orientation {
-    switch (getRandomFrom(3)) {
+    switch (getRandom(3)) {
         case 0:
             return Robot.Orientation.NORTH;
         case 1:

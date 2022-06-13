@@ -1,14 +1,14 @@
 import { Robot } from '@/types/robotsType';
-import { getRandomFrom } from '@/helpers/numberHelper';
+import { getRandom } from '@/helpers/numberHelper';
 import type { Grid } from '@/types/gridTypes';
 
 export function generateScoutPath(max: number = 100): string {
-    const actualMaxInstructions: number = getRandomFrom(max);
+    const actualMaxInstructions: number = getRandom(max);
     const directionOptions: Array<string> = ['L', 'R', 'F'];
     let instructions: Robot.Interface['instructions'] = '';
 
     for (let i = 0; i <= actualMaxInstructions; i++) {
-        instructions += directionOptions[getRandomFrom(directionOptions.length - 1)]
+        instructions += directionOptions[getRandom(directionOptions.length - 1)]
     }
 
     return instructions;

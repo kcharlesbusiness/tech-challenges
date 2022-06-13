@@ -27,8 +27,8 @@ export namespace Robot {
         orientation: Robot.Orientation | null;
         instructions: string | null;
         status: Statuses;
+        readonly gridBounds: Grid.Position;
         // methods
-        getCurrentPosition: () => string;
         setPosition: (position: Grid.Position, orientation: Robot.Orientation) => void;
         executeInstructions: () => void;
         // accessors

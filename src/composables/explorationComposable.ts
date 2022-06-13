@@ -2,7 +2,7 @@ import { reactive } from 'vue';
 import type { Exploration } from '@/types/explorationType';
 import type { Grid } from '@/types/gridTypes';
 import RobotModel from '@/models/RobotModel';
-import { getRandomFrom } from '@/helpers/numberHelper';
+import { getRandom } from '@/helpers/numberHelper';
 import { getRandomOrientation } from '@/helpers/gridHelper';
 import { generateScoutPath } from '@/helpers/robotHelper';
 
@@ -19,8 +19,7 @@ export function useExploration(): Exploration.Interface {
 
     const initialiseScoutRobots = (): void => {
         if (!state.units) {
-            alert('When need to scan the terrain before prepping the robots!');
-            return;
+            throw new Error('When need to scan the terrain before prepping the robots!');
         }
 
         // Prepping the robot bay
@@ -29,8 +28,8 @@ export function useExploration(): Exploration.Interface {
         // initialising the robots
         for (let i = 0; i <= state.units; i++) {
             const initialPosition: Grid.Position = {
-                x: getRandomFrom(state.units),
-                y: getRandomFrom(state.units),
+                x: getRandom(state.units),
+                y: getRandom(state.units),
             }
 
             state.robots.push(
@@ -38,6 +37,7 @@ export function useExploration(): Exploration.Interface {
                     position: initialPosition,
                     orientation: getRandomOrientation(),
                     instructions: generateScoutPath(),
+                    gridBounds: { x: state.units, y: state.units },
                 })
             );
         }
@@ -45,10 +45,10 @@ export function useExploration(): Exploration.Interface {
 
     const scoutTerrain = (): void => {
         if (!state.robots) {
-            alert('When need to scan the terrain and initialise the robots before prepping the robots!');
-            return;
+            throw new Error('When need to scan the terrain and initialise the robots before prepping the robots!');
         }
 
+        // Sequentially scout the terrain with the robots
         state.robots.forEach((robot: RobotModel) => {
             robot.executeInstructions();
         });

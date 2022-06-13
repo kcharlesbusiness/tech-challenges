@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { useExploration } from '../explorationComposable';
-import { getRandomFrom } from '../../helpers/numberHelper';
+import { getRandom } from '../../helpers/numberHelper';
 import { Robot } from '../../types/robotsType';
 
 describe('colonisationComposable', () => {
@@ -17,7 +17,7 @@ describe('colonisationComposable', () => {
     describe('Scanning', () => {
         let expectedUnits: number;
         beforeEach(() => {
-            expectedUnits = getRandomFrom(51);
+            expectedUnits = getRandom(50);
             scanTerrain(expectedUnits);
         });
 
@@ -35,18 +35,17 @@ describe('colonisationComposable', () => {
 
     describe('Scouting', () => {
         beforeEach(() => {
-            scanTerrain(getRandomFrom(51));
+            scanTerrain(getRandom(50));
             initialiseScoutRobots();
         });
 
         it('scouting begins and robots no longer have the "STANDBY" status', () => {
             scoutTerrain();
 
-            setTimeout(() => {
-                state.robots?.forEach((robot: Robot.Interface) => {
-                    expect(robot.status).not.toEqual(Robot.Statuses.STANDBY);
-                });
-            }, 2000);
+            expect(state.robots?.length).toBeTruthy();
+            state.robots?.forEach((robot: Robot.Interface) => {
+                expect(robot.status).not.toEqual(Robot.Statuses.STANDBY);
+            });
         });
     });
 });

@@ -5,19 +5,16 @@ import type { Robot } from '@/types/robotsType';
 
 export const scentStore = reactive<{
     scents: Array<Scent>;
-    addScent: (position: Grid.Position, direction: Robot.Orientation) => void;
-    checkMove: (position: Grid.Position, direction: Robot.Orientation) => boolean;
+    addScent: (position: Grid.Position, orientation: Robot.Orientation) => void;
+    checkMove: (position: Grid.Position, orientation: Robot.Orientation) => boolean;
 }>({
     scents: [],
-    addScent(position: Grid.Position, direction: Robot.Orientation) {
-        this.scents.push({ position, direction });
+    addScent(position: Grid.Position, orientation: Robot.Orientation) {
+        this.scents.push({ position, orientation, name: `${position.x} ${position.y} ${orientation}` });
     },
     // Returns 'true' if we have record of a move that lead to a lost robot
-    checkMove(position: Grid.Position, direction: Robot.Orientation) {
-        return !!this.scents.find((scent: Scent) => {
-            return scent.position.x === position.x &&
-                scent.position.y === position.y &&
-                scent.direction === direction;
-        });
+    checkMove(position: Grid.Position, orientation: Robot.Orientation) {
+        if (!this.scents.length) return false;
+        return !!this.scents.find((scent: Scent) => scent.name === `${position.x} ${position.y} ${orientation}`);
     },
 });
