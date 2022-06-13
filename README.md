@@ -7,7 +7,7 @@ From what I could gauge from the challenge description, these are some important
 - max grid dimensions: 50
 - max robot instructions: 100
 
-This is the first time I was trying out using a simplistic store instead of using Pinea and found it to fine, apart from being unable to debug and monitor the store using the vue dev tools.
+This is the first time I was trying out using a simplistic store instead of using Pinea and found it to be just fine for what was needed, apart from being unable to debug and monitor the store using the vue dev tools.
 
 ## Project Setup
 I'm using NVM for Node version management and Yarn for my package manager. Feel free to use NPM if it's easier for you. Just replace `yarn` with `npm run` for each of the available scripts.
