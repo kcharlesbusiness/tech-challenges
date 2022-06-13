@@ -22,7 +22,7 @@ const { state, scanTerrain, initialiseScoutRobots, scoutTerrain } = useExplorati
     </div>
 
     <div class="explorer--mars__stats">
-      <p v-if="state.units">Grid units: {{ state.units }}</p>
+      <p v-if="state.units">Grid units (x, y): {{ state.units }}</p>
       <p v-if="state.robots?.length">Total Robots: {{ state.robots?.length }}</p>
     </div>
     <template v-if="state.output?.length">
