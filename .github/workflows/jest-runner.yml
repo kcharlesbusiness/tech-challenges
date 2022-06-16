@@ -23,8 +23,14 @@ jobs:
       contents: read
 
     steps:
-      - uses: actions/checkout@v3
-      - name: Check Node version
-        run: node -v
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Set Node version (18.3.0)
+        id: package_version
+        uses: KageKirin/set-node-package-version@v1.0.0
+        with:
+          version: 18.3.0
+
       - name: Jest coverage report
         uses: ArtiomTr/jest-coverage-report-action@v2.0.8
