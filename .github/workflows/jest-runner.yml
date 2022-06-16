@@ -32,5 +32,8 @@ jobs:
         with:
           version: 18.3.0
 
+      - name: Manually run the coverage cmd
+        run: node -v && yarn coverage
+
       - name: Jest coverage report
         uses: ArtiomTr/jest-coverage-report-action@v2.0.8
