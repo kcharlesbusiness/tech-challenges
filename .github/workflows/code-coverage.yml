@@ -1,0 +1,17 @@
+name: Code Coverage (CI)
+
+on:
+  push:
+    branches:
+      - 'martian-robots'
+
+jobs:
+  coverage:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@master
+      - uses: codecov/codecov-action@v2
+        with:
+          fail_ci_if_error: true
+          verbose: true

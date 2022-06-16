@@ -19,7 +19,6 @@ export const scentStore = reactive<{
     checkMove(position: Grid.Position, orientation: Robot.Orientation) {
         if (!this.scents.length) return false;
         if (this.scents.find((scent: Scent) => scent.name === `${position.x} ${position.y} ${orientation}`)) {
-            console.log(true);
             return true;
         } else return false;
     },
