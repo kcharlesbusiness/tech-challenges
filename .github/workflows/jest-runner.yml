@@ -26,6 +26,5 @@ jobs:
       - uses: actions/checkout@v2
       - uses: ArtiomTr/jest-coverage-report-action@v2
         with:
-          test-script: yarn coverage
           package-manager: yarn
-          skip-step: install
+          test-script: yarn coverage
