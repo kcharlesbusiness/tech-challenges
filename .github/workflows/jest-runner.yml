@@ -24,9 +24,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Install modules
-        run: yarn install
       - uses: ArtiomTr/jest-coverage-report-action@v2
         with:
+          test-script: yarn coverage
           package-manager: yarn
           skip-step: install
