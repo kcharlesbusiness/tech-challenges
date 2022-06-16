@@ -9,7 +9,8 @@
     "build-only": "vite build",
     "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
     "lint": "eslint --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-    "coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage",
+    "coverage-ci": "vitest run --coverage --reporter=json --outputFile=report.json"
   },
   "dependencies": {
     "sass": "^1.52.3",

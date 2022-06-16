@@ -12,13 +12,14 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install modules
-        run: yarn install
+        run: yarn install && yarn add -D vitest
       - name: Run tests
         run: yarn test:unit
       - name: Run coverage report
-        run: vitest run --coverage --reporter=json --outputFile=report.json
+        run: yarn coverage-ci
 
   coverage:
+    needs: build
     runs-on: ubuntu-latest
     permissions:
       checks: write
