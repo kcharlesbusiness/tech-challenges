@@ -33,8 +33,10 @@ describe('colonisationComposable', () => {
         it('initiates the robots required to scout the terrain, based on the total "units"', () => {
             initialiseScoutRobots();
 
-            expect(Array.isArray(state.robots)).toBeTruthy();
-            expect(state.robots?.length).toBeGreaterThan(0);
+            setTimeout(() => {
+                expect(Array.isArray(state.robots)).toBeTruthy();
+                expect(state.robots?.length).toBeGreaterThan(0);
+            }, 1000);
         });
     });
 
