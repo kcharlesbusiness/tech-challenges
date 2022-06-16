@@ -17,19 +17,6 @@ jobs:
         run: yarn test:unit
       - name: Run coverage report
         run: yarn coverage-ci
-
-  coverage:
-    needs: build
-    runs-on: ubuntu-latest
-    permissions:
-      checks: write
-      pull-requests: write
-      contents: read
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
       - name: Jest coverage report
         uses: ArtiomTr/jest-coverage-report-action@v2.0.8
         with:
