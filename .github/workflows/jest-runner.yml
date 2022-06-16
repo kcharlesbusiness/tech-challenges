@@ -28,3 +28,5 @@ jobs:
       - name: Install modules
         run: yarn install
       - uses: ArtiomTr/jest-coverage-report-action@v2
+        with:
+          package-manager: yarn coverage
