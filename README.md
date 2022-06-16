@@ -1,6 +1,11 @@
 # - Martian Robots -
 (code challenge can be found in the /public directory)
 
+![Statements](#statements#)
+![Branches](#branches#)
+![Functions](#functions#)
+![Lines](#lines#)
+
 From what I could gauge from the challenge description, these are some important constraints:
 - unspecified number of robots (I will limit to 50 for this challenge)
 - random initial starting point for each robot

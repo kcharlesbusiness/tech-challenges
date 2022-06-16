@@ -9,7 +9,7 @@ export default defineConfig({
   test: {
     environment: 'jsdom',
     coverage: {
-      reporter: ['text', 'json', 'html']
+      reporter: ['text', 'json', 'html', 'json-summary']
     }
   },
   plugins: [vue()],

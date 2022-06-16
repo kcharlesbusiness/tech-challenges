@@ -10,7 +10,14 @@
     "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
     "lint": "eslint --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "coverage": "vitest run --coverage",
-    "coverage-ci": "vitest run --coverage --reporter=json --outputFile=report.json"
+    "coverage-ci": "vitest run --coverage --reporter=json --outputFile=report.json",
+    "make-badges": "istanbul-badges-readme --logo=\"vite\"",
+    "make-badges:ci": "npm run make-badges --logo=\"vite\" -- --ci"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "test:unit && make-badges && git add 'README.md'"
+    }
   },
   "dependencies": {
     "sass": "^1.52.3",
@@ -28,6 +35,8 @@
     "c8": "^7.11.3",
     "eslint": "^8.5.0",
     "eslint-plugin-vue": "^8.2.0",
+    "husky": "^8.0.1",
+    "istanbul-badges-readme": "^1.8.2",
     "jsdom": "^19.0.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.5.1",
