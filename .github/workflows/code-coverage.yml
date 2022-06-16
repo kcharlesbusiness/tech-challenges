@@ -14,8 +14,7 @@ jobs:
       contents: read
 
     steps:
-      - uses: actions/checkout@v1
-      - uses: ArtiomTr/jest-coverage-report-action@v2
-
+    - uses: actions/checkout@v1
+    - uses: ArtiomTr/jest-coverage-report-action@v2
       with:
         test-script: yarn test:unit
