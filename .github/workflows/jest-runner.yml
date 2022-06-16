@@ -16,7 +16,6 @@ jobs:
       - name: Run tests
         run: yarn test:unit
   coverage:
-    needs: build
     runs-on: ubuntu-latest
     permissions:
       checks: write
@@ -29,4 +28,5 @@ jobs:
         run: yarn install
       - uses: ArtiomTr/jest-coverage-report-action@v2
         with:
-          package-manager: yarn coverage
+          package-manager: yarn
+          skip-step: install
