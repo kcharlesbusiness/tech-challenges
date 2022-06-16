@@ -1,10 +1,10 @@
 # - Martian Robots -
 (code challenge can be found in the /public directory)
 
-![Statements](#statements#)
-![Branches](#branches#)
-![Functions](#functions#)
-![Lines](#lines#)
+![Statements](https://img.shields.io/badge/statements-99.51%25-brightgreen.svg?style=flat)
+![Branches](https://img.shields.io/badge/branches-97.03%25-brightgreen.svg?style=flat)
+![Functions](https://img.shields.io/badge/functions-100%25-brightgreen.svg?style=flat)
+![Lines](https://img.shields.io/badge/lines-99.51%25-brightgreen.svg?style=flat)
 
 From what I could gauge from the challenge description, these are some important constraints:
 - unspecified number of robots (I will limit to 50 for this challenge)

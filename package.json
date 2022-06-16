@@ -11,8 +11,8 @@
     "lint": "eslint --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "coverage": "vitest run --coverage",
     "coverage-ci": "vitest run --coverage --reporter=json --outputFile=report.json",
-    "make-badges": "istanbul-badges-readme --logo=\"vite\"",
-    "make-badges:ci": "npm run make-badges --logo=\"vite\" -- --ci"
+    "make-badges": "istanbul-badges-readme",
+    "make-badges:ci": "npm run make-badges -- --ci"
   },
   "lint-staged": [
     "vitest --environment jsdom",

@@ -1,4 +1,4 @@
-name: Jest Runner (CI)
+name: Test Runner (CI)
 
 on:
   push:
@@ -10,12 +10,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout branch
+        uses: actions/checkout@v2
       - name: Install modules
         run: yarn install && yarn add -D vitest
       - name: Run tests
         run: yarn test:unit
-      - name: Run coverage report
-        run: yarn coverage-ci
-      - name: Make README badges
+      - name: Run coverage
+        run: yarn coverage
+      - name: Update README badges
         run: yarn make-badges
+      - name: Push changes
+        run: git push -u origin martian-robots --force
