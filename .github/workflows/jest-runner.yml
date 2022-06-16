@@ -23,5 +23,5 @@ jobs:
       contents: read
 
     steps:
-      - uses: actions/checkout@v2
-      - uses: ArtiomTr/jest-coverage-report-action@v2
+      - name: Jest coverage report
+        uses: ArtiomTr/jest-coverage-report-action@v2.0.8
