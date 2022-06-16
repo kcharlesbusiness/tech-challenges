@@ -14,9 +14,14 @@
     "make-badges": "istanbul-badges-readme --logo=\"vite\"",
     "make-badges:ci": "npm run make-badges --logo=\"vite\" -- --ci"
   },
+  "lint-staged": [
+    "vitest --environment jsdom",
+    "istanbul-badges-readme --logo=\"vite\"",
+    "git add 'README.md'"
+  ],
   "husky": {
     "hooks": {
-      "pre-commit": "test:unit && make-badges && git add 'README.md'"
+      "pre-commit": "lint-staged"
     }
   },
   "dependencies": {
