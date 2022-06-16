@@ -17,7 +17,5 @@ jobs:
         run: yarn test:unit
       - name: Run coverage report
         run: yarn coverage-ci
-      - name: Jest coverage report
-        uses: ArtiomTr/jest-coverage-report-action@v2.0.8
-        with:
-          skip-step: all
+      - name: Make README badges
+        run: yarn make-badges
